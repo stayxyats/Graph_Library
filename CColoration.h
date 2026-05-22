@@ -30,6 +30,17 @@ public:
 	* Entraine : rien
 	*********************************/
 	bool COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, CArc>&);
+	
+	/********************************
+	* COLAllColored
+	*********************************
+	* Entrée : graphe non-orientée 
+	* Nécessite : un graphe non orienté
+	* Sortie : un booleen vrai si tous les sommets sont colorés, faux sinon
+	* Entraine : rien
+	*********************************/
+	bool COLAllColored(const CGraph<CSCouleur, CArc>&);
+
 };
 
 #endif
