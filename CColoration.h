@@ -39,7 +39,7 @@ public:
 	* Sortie : un booleen vrai si tous les sommets sont colorés, faux sinon
 	* Entraine : rien
 	*********************************/
-	bool COLAllColored(const CGraph<CSCouleur, CArc>&);
+	bool COLAllColored(const CGraph<CSCouleur, CArc>&GRAgraphe);
 
 };
 

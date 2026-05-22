@@ -11,6 +11,7 @@ private:
  
 	//pas de constructeur, les couleurs sont attribués directement par le système
 	
+public:
 	// Methodes
 	/********************************
 	* SCOAjouterCouleur 
