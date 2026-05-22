@@ -12,6 +12,8 @@ private:
 	//pas de constructeur, les couleurs sont attribués directement par le système
 	
 public:
+	//constructeur
+	CSCouleur(unsigned int uiNumero) : CSommet(uiNumero), uiSCOcouleur(0) {}
 	// Methodes
 	/********************************
 	* SCOAjouterCouleur 
