@@ -1,13 +1,15 @@
-#ifndef CMONSOMMET_H
-#define CMONSOMMET_H
+#ifndef CSCOULEUR_H
+#define CSCOULEUR_H
 #include "CArc.h"
 #include "CSommet.h"
 
-class CMonSommet: public CSommet
+class CSCouleur: public CSommet
 {
 private:
-	// Attribut
+	//attributs
+	unsigned int uiSCOcouleur;
 
+//pas de constructeur, les couleurs sont attribués directement par le système
 };
 
 
