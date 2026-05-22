@@ -6,10 +6,33 @@
 class CSCouleur: public CSommet
 {
 private:
-	//attributs
+	// Attribut
 	unsigned int uiSCOcouleur;
+ 
+	//pas de constructeur, les couleurs sont attribués directement par le système
+	
+	// Methodes
+	/********************************
+	* SCOAjouterCouleur 
+	*********************************
+	* Entrée : 1 entier uiC
+	* Nécessite : Rien
+	* Sortie : rien
+	* Entraine :la coloration du sommet
+	*********************************/
+	void SCOAjouterCouleur(unsigned int uiC);
 
-//pas de constructeur, les couleurs sont attribués directement par le système
+	/********************************
+	* SCOGetCouleur
+	*********************************
+	* Entrée : rien
+	* Nécessite : Rien
+	* Sortie : un unsigned int
+	* Entraine : la couleur du numero
+	*********************************/
+	unsigned int SCOGetCouleur() const;
+
+
 };
 
 
