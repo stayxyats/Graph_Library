@@ -11,7 +11,28 @@ bool CColoration::COLAllColored(const CGraph<CSCouleur, CArc>& GRAgraphe) {
 	return true;
 }
 
-//faire une fonction qui renvoie la liste de couleurs de sommets adjacent coloriés, donc en parametre un sommet.
+
+
+vector<unsigned int> CColoration::COLListeCouleurs(const CSCouleur* SCOsommet, const CGraph<CSCouleur, CArc>& GRAgraphe) {
+    vector<unsigned int> list_couleurs;
+    const vector<CArc*>& arcs = SCOsommet->SOMGetArcD();
+
+    for (unsigned int i = 0; i < arcs.size(); ++i) {
+        unsigned int uiNumVoisin = arcs[i]->ARCGetSomA();
+
+        const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
+        for (unsigned int j = 0; j < sommets.size(); ++j) {
+            if (sommets[j]->SOMGetNumSommet() == uiNumVoisin) {
+                if (sommets[j]->SCOGetCouleur() != 0) {
+                    list_couleurs.push_back(sommets[j]->SCOGetCouleur());
+                }
+                break;
+            }
+        }
+    }
+    return list_couleurs;
+}
+
 
 bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, CArc>& GRAgraphe) {
 	if (CColoration::COLAllColored(GRAgraphe)) {

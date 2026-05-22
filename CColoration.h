@@ -5,7 +5,6 @@
 #include "CGraph.h"
 
 #include <vector>
-using namespace std;
 
 class CColoration
 {
@@ -39,7 +38,17 @@ public:
 	* Sortie : un booleen vrai si tous les sommets sont colorés, faux sinon
 	* Entraine : rien
 	*********************************/
-	bool COLAllColored(const CGraph<CSCouleur, CArc>&GRAgraphe);
+	bool COLAllColored(const CGraph<CSCouleur, CArc>& GRAgraphe);
+
+	/********************************
+	* COLListeCouleurs
+	*********************************
+	* Entrée : un sommet couleur
+	* Nécessite : un sommet couleur
+	* Sortie : une liste de "couleurs"
+	* Entraine : rien
+	*********************************/
+	vector<unsigned int> COLListeCouleurs(const CSCouleur* SCOsommet, const CGraph<CSCouleur, CArc>& GRAgraphe);
 
 };
 
