@@ -5,7 +5,7 @@
 bool CColoration::COLAllColored(const CGraph<CSCouleur, CArc>& GRAgraphe) {
 	const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
 	for (unsigned int i = 0; i < sommets.size(); ++i) {
-		if (sommets[i]->SCOGetCouleur() == NULL)
+		if (sommets[i]->SCOGetCouleur() == 0)
 			return false;
 	}
 	return true;
@@ -24,7 +24,7 @@ vector<unsigned int> CColoration::COLListeCouleurs(const CSCouleur* SCOsommet, c
         for (unsigned int j = 0; j < sommets.size(); ++j) {
             if (sommets[j]->SOMGetNumSommet() == uiNumVoisin) {
 
-                if (sommets[j]->SCOGetCouleur() != NULL) {
+                if (sommets[j]->SCOGetCouleur() != 0) {
                     list_couleurs.push_back(sommets[j]->SCOGetCouleur());
                 }
                 break;
@@ -42,7 +42,7 @@ bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, 
 	const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
 	for (unsigned int i = 0; i < sommets.size(); ++i) {
 		CSCouleur* s = sommets[i];
-		if (s->SCOGetCouleur() == NULL) {
+		if (s->SCOGetCouleur() == 0) {
 			vector<unsigned int>Cs = COLListeCouleurs(s, GRAgraphe);
 			if (Cs.size() == uik) {
 				return false;
@@ -53,7 +53,7 @@ bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, 
 					if (COLExisteColoration(uik, GRAgraphe)) {
 						return true;
 					}
-					s->SCOAjouterCouleur(NULL);
+					s->SCOAjouterCouleur(0);
 				}
 			}
 			return false;
