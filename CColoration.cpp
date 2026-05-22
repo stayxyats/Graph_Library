@@ -73,5 +73,5 @@ unsigned int CColoration::COLColoration(const CGraph<CSCouleur, CArc>& GRAGraph)
 			uiK -= 1;
 		}
 	}
-	return uiK;
+	return uiK+1;
 }
