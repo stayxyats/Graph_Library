@@ -53,7 +53,7 @@ private:
 		}
 		return nullptr;
 	}
-protected:
+public:
 	/********************************
 	* GROGetSommets
 	*********************************
