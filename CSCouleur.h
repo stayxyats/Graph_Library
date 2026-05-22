@@ -28,7 +28,7 @@ private:
 	* Entrée : rien
 	* Nécessite : Rien
 	* Sortie : un unsigned int
-	* Entraine : la couleur du numero
+	* Entraine : la couleur du sommet
 	*********************************/
 	unsigned int SCOGetCouleur() const;
 
