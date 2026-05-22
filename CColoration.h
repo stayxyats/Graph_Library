@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-class CSommet
+class CColoration
 {
 public:
 	// Méthodes

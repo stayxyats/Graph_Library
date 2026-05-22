@@ -140,19 +140,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
+    <ClCompile Include="CColoration.cpp" />
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="CGraph.cpp" />
     <ClCompile Include="CGraphOrient.cpp" />
     <ClCompile Include="CLecture.cpp" />
+    <ClCompile Include="CSCouleur.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="projetcplusplus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CArc.h" />
+    <ClInclude Include="CColoration.h" />
     <ClInclude Include="CException.h" />
     <ClInclude Include="CGraph.h" />
     <ClInclude Include="CGraphOrient.h" />
     <ClInclude Include="CLecture.h" />
+    <ClInclude Include="CSCouleur.h" />
     <ClInclude Include="CSommet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
