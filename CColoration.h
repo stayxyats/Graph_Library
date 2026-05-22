@@ -18,7 +18,7 @@ public:
 	* Sortie : un unsigned int k correspondant au nombre de couleurs utilisées
 	* Entraine : rien
 	*********************************/
-	unsigned int COLColoration(const CGraph<CSCouleur, CArc>&);
+	unsigned int COLColoration(const CGraph<CSCouleur, CArc>& GRAGraph);
 	
 	/********************************
 	* COLExisteColoration
@@ -28,7 +28,7 @@ public:
 	* Sortie : un booleen vrai si une coloration de k couleurs est possible, faux sinon
 	* Entraine : rien
 	*********************************/
-	bool COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, CArc>&);
+	bool COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, CArc>& GRAGraph);
 	
 	/********************************
 	* COLAllColored

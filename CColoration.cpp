@@ -40,7 +40,7 @@ bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, 
 		return true;
 	}
 	const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
-	for (unsigned int i = 1; i < sommets.size(); ++i) {
+	for (unsigned int i = 0; i < sommets.size(); ++i) {
 		CSCouleur* s = sommets[i];
 		if (s->SCOGetCouleur() == NULL) {
 			vector<unsigned int>Cs = COLListeCouleurs(s, GRAgraphe);
@@ -60,4 +60,18 @@ bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, 
 
 		}
 	}
+}
+
+
+unsigned int CColoration::COLColoration(const CGraph<CSCouleur, CArc>& GRAGraph) {
+	// on recherche le nombre de sommet du graphe
+	unsigned int uiK = GRAGraph.GROGetSommets().size();
+	bool bColor = true;
+	while (bColor) {
+		bColor = COLExisteColoration(uiK, GRAGraph);
+		if (bColor) {
+			uiK -= 1;
+		}
+	}
+	return uiK;
 }
