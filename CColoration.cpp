@@ -1,5 +1,6 @@
 #include "CColoration.h"
 #include "CGraph.h"
+#include <set>
 
 
 bool CColoration::COLAllColored(const CGraph<CSCouleur, CArc>& GRAgraphe) {
@@ -44,7 +45,10 @@ bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, 
 		CSCouleur* s = sommets[i];
 		if (s->SCOGetCouleur() == 0) {
 			vector<unsigned int>Cs = COLListeCouleurs(s, GRAgraphe);
-			if (Cs.size() == uik) {
+
+			//on enleve les doublons, pour un sommet qui a 2 voisins avec la meme couleur par exemple
+			std::set<unsigned> CsClean(Cs.begin(), Cs.end());
+			if (CsClean.size() == uik) {
 				return false;
 			}
 			for (unsigned int j = 1; j <= uik; ++j) {
