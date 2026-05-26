@@ -50,6 +50,15 @@ public:
 	*********************************/
 	vector<unsigned int> COLListeCouleurs(const CSCouleur* SCOsommet, const CGraph<CSCouleur, CArc>& GRAgraphe);
 
+	/********************************
+	* COLDecolorer
+	*********************************
+	* Entrée : un graphe non orienté
+	* Nécessite : un graphe non orienté
+	* Sortie : rien
+	* Entraine : décoloration du graphe
+	*********************************/
+	void COLDecolorer(const CGraph<CSCouleur, CArc>& GRAgraphe);
 };
 
 #endif
