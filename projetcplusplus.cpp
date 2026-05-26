@@ -1,42 +1,24 @@
 #include <iostream>
-#include "CGraphOrient.h"
 #include "CGraph.h"
-#include "CSommet.h"
+#include "CSCouleur.h"
 #include "CArc.h"
-#include "CException.h"
-#include "CLecture.h"
+#include "CColoration.h"
+
 using namespace std;
 
-int main(int argc, char* argv[])
+int main() // Test triangle
 {
-	// Verification qu'un nom de fichier est passe en parametre
-	if (argc < 2)
-	{
-		cout << "Usage : " << argv[0] << " <nom_fichier>" << endl;
-		return 1;
-	}
+    CGraph<CSCouleur, CArc> g;
+    g.GROAjouterSommet(1);
+    g.GROAjouterSommet(2);
+    g.GROAjouterSommet(3);
+    g.GROAjouterSommet(4);
+    g.GRAAjouterArete(1, 2);
+    g.GRAAjouterArete(2, 3);
+    g.GRAAjouterArete(3, 4);
+    g.GRAAjouterArete(4, 1);
 
-	try
-	{
-		//Lecture du fichier et creation du graphe
-		CGraphOrient<CSommet, CArc> GROGraphe = CLecture::LECFichier(argv[1]);
-
-		// Afichage du graphe original
-		cout << "Graphe original :" << endl;
-		GROGraphe.GROAfficher();
-
-		// Inversion des arcs
-		CGraphOrient<CSommet, CArc> GROGrapheInverse = GROGraphe.GROInverser();
-
-		// Affichage du graphe inverse
-		cout << "\nGraphe inverse :" << endl;
-		GROGrapheInverse.GROAfficher();
-	}
-	catch (CException& EXCParam)
-	{
-		cout << "Erreur : code " << EXCParam.EXCLireValeur() << endl;
-		return 1;
-	}
-
-	return 0;
+    CColoration col;
+    unsigned int k = col.COLColoration(g);
+    cout << "C4 k = " << k << endl;
 }
