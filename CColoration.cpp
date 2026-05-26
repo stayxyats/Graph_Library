@@ -62,12 +62,19 @@ bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, 
 	}
 }
 
+void CColoration::COLDecolorer(const CGraph<CSCouleur, CArc>& GRAgraphe) {
+	const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
+	for (unsigned int i = 0; i < sommets.size(); ++i)
+		sommets[i]->SCOAjouterCouleur(0);
+}
+
 
 unsigned int CColoration::COLColoration(const CGraph<CSCouleur, CArc>& GRAGraph) {
 	// on recherche le nombre de sommet du graphe
 	unsigned int uiK = GRAGraph.GROGetSommets().size();
 	bool bColor = true;
 	while (bColor) {
+		COLDecolorer(GRAGraph);
 		bColor = COLExisteColoration(uiK, GRAGraph);
 		if (bColor) {
 			uiK -= 1;
