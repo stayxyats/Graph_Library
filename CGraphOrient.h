@@ -61,7 +61,7 @@ public:
 	* Entrée : rien
 	* Nécessite : rien
 	* Sortie : pGROSommets par reference constante
-	* Entraine : on renvoie la liste des sommets du graphe, accessible uniquement par les classes filles
+	* Entraine : on renvoie la liste des sommets du graphe
 	*********************************/
 	const vector<TSommet*>& GROGetSommets() const { return pGROSommets; };
 
@@ -71,7 +71,7 @@ public:
 	* Entrée : Rien
 	* Nécessite : Rien
 	* Sortie : pGROArcs par reference constante
-	* Entraine : On renvoie la liste des arcs du graphe, accessible uniquement par les classes filles
+	* Entraine : On renvoie la liste des arcs du graphe
 	*********************************/
 	const vector<TArc*>& GROGetArcs() const { return pGROArcs; };
 

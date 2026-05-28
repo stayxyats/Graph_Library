@@ -6,19 +6,28 @@
 
 using namespace std;
 
-int main() // Test triangle
+int main() 
 {
-    CGraph<CSCouleur, CArc> g;
-    g.GROAjouterSommet(1);
-    g.GROAjouterSommet(2);
-    g.GROAjouterSommet(3);
-    g.GROAjouterSommet(4);
-    g.GRAAjouterArete(1, 2);
-    g.GRAAjouterArete(2, 3);
-    g.GRAAjouterArete(3, 4);
-    g.GRAAjouterArete(4, 1);
+    //creation du graphe le meme que le sujet
+    CGraph<CSCouleur, CArc> GRAGraphe;
+    unsigned int uiBoucle;
+    for (uiBoucle = 1; uiBoucle < 9; ++uiBoucle) {
+        GRAGraphe.GROAjouterSommet(uiBoucle);
+    }
 
-    CColoration col;
-    unsigned int k = col.COLColoration(g);
-    cout << "C4 k = " << k << endl;
+    GRAGraphe.GRAAjouterArete(1, 2);
+    GRAGraphe.GRAAjouterArete(1, 3);
+    GRAGraphe.GRAAjouterArete(1, 4);
+    GRAGraphe.GRAAjouterArete(2, 5);
+    GRAGraphe.GRAAjouterArete(3, 6);
+    GRAGraphe.GRAAjouterArete(3, 7);
+    GRAGraphe.GRAAjouterArete(4, 7);
+    GRAGraphe.GRAAjouterArete(5, 6);
+    GRAGraphe.GRAAjouterArete(5, 8);
+    GRAGraphe.GRAAjouterArete(6, 8);
+    GRAGraphe.GRAAjouterArete(7, 8);
+
+    CColoration CCCol;
+    unsigned int k = CCCol.COLColoration(GRAGraphe);
+    cout << "k = " << k << endl;
 }

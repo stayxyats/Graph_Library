@@ -13,9 +13,9 @@ public:
 	/********************************
 	* COLColoration
 	*********************************
-	* Entrée : graphe non-orientée
+	* Entrée : graphe non orientée
 	* Nécessite : un graphe non orienté
-	* Sortie : un unsigned int k correspondant au nombre de couleurs utilisées
+	* Sortie : un unsigned int k correspondant au nombre de couleurs utilisée
 	* Entraine : rien
 	*********************************/
 	unsigned int COLColoration(const CGraph<CSCouleur, CArc>& GRAGraph);
@@ -23,7 +23,7 @@ public:
 	/********************************
 	* COLExisteColoration
 	*********************************
-	* Entrée : graphe non-orientée et unsigned int
+	* Entrée : un graphe non orientée et unsigned int uik
 	* Nécessite : un graphe non orienté
 	* Sortie : un booleen vrai si une coloration de k couleurs est possible, faux sinon
 	* Entraine : rien
@@ -33,7 +33,7 @@ public:
 	/********************************
 	* COLAllColored
 	*********************************
-	* Entrée : graphe non-orientée 
+	* Entrée : un graphe non orientée 
 	* Nécessite : un graphe non orienté
 	* Sortie : un booleen vrai si tous les sommets sont colorés, faux sinon
 	* Entraine : rien
@@ -43,9 +43,9 @@ public:
 	/********************************
 	* COLListeCouleurs
 	*********************************
-	* Entrée : un sommet couleur
-	* Nécessite : un sommet couleur
-	* Sortie : une liste de "couleurs"
+	* Entrée : un CSCCouleur
+	* Nécessite : un CSCouleur
+	* Sortie : une liste de couleurs
 	* Entraine : rien
 	*********************************/
 	vector<unsigned int> COLListeCouleurs(const CSCouleur* SCOsommet, const CGraph<CSCouleur, CArc>& GRAgraphe);

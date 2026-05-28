@@ -4,9 +4,11 @@
 
 
 bool CColoration::COLAllColored(const CGraph<CSCouleur, CArc>& GRAgraphe) {
-	const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
-	for (unsigned int i = 0; i < sommets.size(); ++i) {
-		if (sommets[i]->SCOGetCouleur() == 0)
+	unsigned int uiBoucle;
+	const vector<CSCouleur*>& lCSCSommets = GRAgraphe.GROGetSommets();
+	unsigned int uiTaille = lCSCSommets.size();
+	for (uiBoucle = 0; uiBoucle < uiTaille; ++uiBoucle) {
+		if (lCSCSommets[uiBoucle]->SCOGetCouleur() == 0)
 			return false;
 	}
 	return true;
@@ -15,49 +17,60 @@ bool CColoration::COLAllColored(const CGraph<CSCouleur, CArc>& GRAgraphe) {
 
 
 vector<unsigned int> CColoration::COLListeCouleurs(const CSCouleur* SCOsommet, const CGraph<CSCouleur, CArc>& GRAgraphe) {
-    vector<unsigned int> list_couleurs;
-    const vector<CArc*>& arcs = SCOsommet->SOMGetArcD();
+    vector<unsigned int> luiCouleurs;
+	// on recupere les arcs partant du sommet et tous les sommets du graphe
+    const vector<CArc*>& lCArcs = SCOsommet->SOMGetArcD();
+	const vector<CSCouleur*>& lCSCSommets = GRAgraphe.GROGetSommets();
 
-    for (unsigned int i = 0; i < arcs.size(); ++i) {
-        unsigned int uiNumVoisin = arcs[i]->ARCGetSomA();
-
-        const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
-        for (unsigned int j = 0; j < sommets.size(); ++j) {
-            if (sommets[j]->SOMGetNumSommet() == uiNumVoisin) {
-
-                if (sommets[j]->SCOGetCouleur() != 0) {
-                    list_couleurs.push_back(sommets[j]->SCOGetCouleur());
+	unsigned int uiBoucle;
+	unsigned int uiTaille = lCArcs.size();
+	// on parcourt les arcs du sommet
+    for (uiBoucle = 0; uiBoucle < uiTaille; ++uiBoucle){
+        unsigned int uiNumVoisin = lCArcs[uiBoucle]->ARCGetSomA();
+		unsigned int uiTailleSommets = lCSCSommets.size();
+		unsigned int uiBoucle2;
+        for (uiBoucle2 = 0; uiBoucle2 < uiTailleSommets; ++uiBoucle2) {
+            if (lCSCSommets[uiBoucle2]->SOMGetNumSommet() == uiNumVoisin) {
+				// on ajoute la couleur du voisin si le sommet est deja colorie
+                if (lCSCSommets[uiBoucle2]->SCOGetCouleur() != 0) {
+					luiCouleurs.push_back(lCSCSommets[uiBoucle2]->SCOGetCouleur());
                 }
                 break;
             }
         }
     }
-    return list_couleurs;
+    return luiCouleurs;
 }
 
 
 bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, CArc>& GRAgraphe) {
+	// on ragarde si le graphe est deja tout colorié
 	if (COLAllColored(GRAgraphe)) {
 		return true;
 	}
-	const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
-	for (unsigned int i = 0; i < sommets.size(); ++i) {
-		CSCouleur* s = sommets[i];
-		if (s->SCOGetCouleur() == 0) {
-			vector<unsigned int>Cs = COLListeCouleurs(s, GRAgraphe);
+	const vector<CSCouleur*>& lCSCSommets = GRAgraphe.GROGetSommets();
+	unsigned int uiBoucle;
+	unsigned int uiTaille = lCSCSommets.size();
+	for (uiBoucle = 0; uiBoucle < uiTaille; ++uiBoucle) {
+		CSCouleur* CSCSom = lCSCSommets[uiBoucle];
+		// on recherche un sommet pas colorié
+		if (CSCSom->SCOGetCouleur() == 0) {
+			vector<unsigned int>Cs = COLListeCouleurs(CSCSom, GRAgraphe);
 
 			//on enleve les doublons, pour un sommet qui a 2 voisins avec la meme couleur par exemple
 			std::set<unsigned> CsClean(Cs.begin(), Cs.end());
 			if (CsClean.size() == uik) {
 				return false;
 			}
-			for (unsigned int j = 1; j <= uik; ++j) {
-				if (std::find(Cs.begin(), Cs.end(), j) == Cs.end()) {
-					s->SCOAjouterCouleur(j);
+			unsigned int uiBoucle2;
+			for (uiBoucle2 = 1; uiBoucle2 <= uik; ++uiBoucle2) {
+				// si la couleur est pas utilisé par ses voisins
+				if (std::find(Cs.begin(), Cs.end(), uiBoucle2) == Cs.end()) {
+					CSCSom->SCOAjouterCouleur(uiBoucle2);
 					if (COLExisteColoration(uik, GRAgraphe)) {
 						return true;
 					}
-					s->SCOAjouterCouleur(0);
+					CSCSom->SCOAjouterCouleur(0);
 				}
 			}
 			return false;
@@ -67,9 +80,12 @@ bool CColoration::COLExisteColoration(unsigned int uik, const CGraph<CSCouleur, 
 }
 
 void CColoration::COLDecolorer(const CGraph<CSCouleur, CArc>& GRAgraphe) {
-	const vector<CSCouleur*>& sommets = GRAgraphe.GROGetSommets();
-	for (unsigned int i = 0; i < sommets.size(); ++i)
-		sommets[i]->SCOAjouterCouleur(0);
+	const vector<CSCouleur*>& lCSCSommets = GRAgraphe.GROGetSommets();
+	unsigned int uiBoucle;
+	unsigned int uiTaille = lCSCSommets.size();
+	for (uiBoucle = 0; uiBoucle < uiTaille; ++uiBoucle) {
+		lCSCSommets[uiBoucle]->SCOAjouterCouleur(0);
+	}
 }
 
 

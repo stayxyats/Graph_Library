@@ -9,11 +9,19 @@ private:
 	// Attribut
 	unsigned int uiSCOcouleur;
  
-	//pas de constructeur, les couleurs sont attribués directement par le système
 	
 public:
-	//constructeur
+	//Constructeur
+	/********************************
+	* CSCouleur
+	*********************************
+	* Entrée :1 entier uiNumero
+	* Nécessite : uiNumero est un numero de sommet valide
+	* Sortie : rien
+	* Entraine : l'objet est initialisé correctement avec le numero et sa couleur à 0
+	*********************************/
 	CSCouleur(unsigned int uiNumero) : CSommet(uiNumero), uiSCOcouleur(0) {}
+	
 	// Methodes
 	/********************************
 	* SCOAjouterCouleur 
